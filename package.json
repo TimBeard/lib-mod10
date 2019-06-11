@@ -1,0 +1,23 @@
+{
+    "name": "lib-mod10",
+    "version": "1.2.0",
+    "description": "A module for checking numbers against luhn algorithm",
+    "main": "lib-mod10.js",
+    "repository": "https://github.com/TimBeard/lib-mod10.git",
+    "author": "Tim Beard",
+    "license": "MIT",
+    "keywords": [
+        "node",
+        "mod10",
+        "luhn",
+        "formula",
+        "check",
+        "sum",
+        "checksum",
+        "math",
+        "modulus",
+        "modulo",
+        "number",
+        "security"
+    ]
+}
