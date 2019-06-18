@@ -10,35 +10,22 @@
 
 export default (() => {
 
-    /**
-     *  Validates any non-digit character
-     *
-     *  @scope  private
-     */
-
+    // This will match any not digit character
     const nonDgtRex = new RegExp('\\D')
 
-    /**
-     *  Checksum digit by digit calculation logic
-     *
-     *  @scope private
-     */
-
+    // Digit by digit calculation logic of the checksum
     const dgtAdd = (sum, cur, idx) => {
 
-        // If curent digit equals 0, skip...
+        // Do not execute any computation if digit equals 0
         if (!cur) {
 
             return sum
         }
 
-        // On even indice...
+        // Multiply digits on even indice by 2 then reduce result to a single digit (using mod 9)
         if (idx % 2 === 0) {
 
-            // Multiply value by 2
             cur *= 2
-
-            // If result is greater than 9, reduce to a single digit
             cur = cur % 9 || 9
         }
 
@@ -46,21 +33,20 @@ export default (() => {
         return sum + cur
     }
 
-    /**
-     *  Checksum calculation logic
-     *
-     *  @scope  private
-     */
-
+    // Checksum calculation logic
     const computeSum = (input) => input.split('')
         .reverse()
         .map(parseFloat)
         .reduce(dgtAdd, 0)
 
     /**
-     *  Checks an input against Luhn Formula
+     *  Luhn.check
      *
-     *  @scope  public
+     *  Checks an input against Luhn formula (mod10)
+     *
+     *  @param  Mixed   input   A number or a string of numbers to check against Luhn formula
+     *
+     *  @output Boolean true if input is valid according to Luhn formula
      */
 
     const check = (input) => {
@@ -82,12 +68,16 @@ export default (() => {
 
         // Checksum added to sum should be divisible by 10
         return (res % 10 === 0)
-    };
+    }
 
     /**
-     *  Computes check digit of an input based on Luhn Formula
+     *  Luhn.compute
      *
-     *  @scope public
+     *  Computes checksum of an input
+     *
+     *  @param  Mixed   input   A number for which to compute the checksum
+     *
+     *  @output Number  The valid checksum for the input
      */
 
     const compute = (input) => {
@@ -104,9 +94,9 @@ export default (() => {
         // Compute checksum
         const sum = computeSum(input)
 
-        // The check digit equals 10 -
+        // Return the checksum
         return (sum * 9) % 10
-    };
+    }
 
     // Expose public methods
     return { check, compute }
