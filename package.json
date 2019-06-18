@@ -1,6 +1,6 @@
 {
     "name": "lib-mod10",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "A module for checking numbers against luhn algorithm",
     "main": "lib-mod10.js",
     "repository": "https://github.com/TimBeard/lib-mod10.git",
